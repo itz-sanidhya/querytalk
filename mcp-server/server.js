@@ -4,10 +4,10 @@ const express = require("express");
 const cors = require("cors");
 const Groq = require("groq-sdk");
 const { connectDB } = require("./db");
-const readData = require("./tools/readTool");
-const insertData = require("./tools/insertTool");
-const updateData = require("./tools/updateTool");
-const deleteData = require("./tools/deleteTool");
+const readData = require("./tools/readtool");
+const insertData = require("./tools/inserttool");
+const updateData = require("./tools/updatetool");
+const deleteData = require("./tools/deletetool");
 const authRoutes = require("./routes/auth");
 const authMiddleware = require("./middleware/auth");
 
