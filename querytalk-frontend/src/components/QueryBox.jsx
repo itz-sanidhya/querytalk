@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-const BACKEND_URL = "http://localhost:5000";
+const BACKEND_URL = "https://sanidhya-querytalk-backend.onrender.com";
 
 function QueryBox({ setResults, setError, setLoading, loading, token }) {
   const [text, setText] = useState("");

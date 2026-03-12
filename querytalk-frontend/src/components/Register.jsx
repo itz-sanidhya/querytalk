@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-const BACKEND_URL = "http://localhost:5000";
+const BACKEND_URL = "https://sanidhya-querytalk-backend.onrender.com";
 
 function Register({ onSwitch }) {
   const [username, setUsername] = useState("");
@@ -92,4 +92,4 @@ function Register({ onSwitch }) {
   );
 }
 
-export default Register;
+export default Register;    
