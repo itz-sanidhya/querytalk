@@ -22,15 +22,9 @@ const groq = new Groq({
 });
 
 app.use(cors({
-    origin: [
-        "http://localhost:5173",
-        "https://querytalk-frontend.vercel.app",
-        "https://sanidhya-querytalk-frontend.vercel.app",
-        "https://sanidhya-querytalk-frontend-r5wvl9593-itz-sanidhyas-projects.vercel.app",
-        "https://sanidhya-querytalk-frontend-pied.vercel.app"
-    ],
+    origin: "*",
     methods: ["GET", "POST"],
-}));  
+}));
 app.use(express.json());
 
 /* -------------------- AUTH ROUTES (public) -------------------- */
