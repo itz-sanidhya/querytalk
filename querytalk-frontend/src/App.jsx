@@ -21,6 +21,7 @@ function App() {
   const [toast, setToast] = useState(null);
   const [animateResults, setAnimateResults] = useState(false);
   const [activePage, setActivePage] = useState("dashboard");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const showToast = (message, type = "success") => {
     setToast({ message, type });
@@ -55,7 +56,11 @@ function App() {
     showToast(err, "error");
   };
 
-  // Show auth pages if not logged in
+  const navigateTo = (page) => {
+    setActivePage(page);
+    setMenuOpen(false);
+  };
+
   if (!isLoggedIn) {
     return (
       <div className="app dark">
@@ -87,12 +92,13 @@ function App() {
           <span className="logo-text">Query<span className="accent">Talk</span></span>
         </div>
 
+        {/* DESKTOP NAV */}
         <nav className="nav">
           {["dashboard", "collections", "about"].map((page) => (
             <button
               key={page}
               className={`nav-btn ${activePage === page ? "nav-active" : ""}`}
-              onClick={() => setActivePage(page)}
+              onClick={() => navigateTo(page)}
             >
               {page === "dashboard" && "⚡ Dashboard"}
               {page === "collections" && "🗄️ Collections"}
@@ -107,12 +113,36 @@ function App() {
           <button className="toggle-btn" onClick={() => setDarkMode(!darkMode)}>
             {darkMode ? "☀️" : "🌙"}
           </button>
-          <button className="logout-btn" onClick={logout}>
-            Logout
+          <button className="logout-btn" onClick={logout}>Logout</button>
+          {/* HAMBURGER - mobile only */}
+          <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+            {menuOpen ? "✕" : "☰"}
           </button>
         </div>
       </header>
 
+      {/* MOBILE DROPDOWN MENU */}
+      {menuOpen && (
+        <div className="mobile-menu glass">
+          <div className="mobile-user">👤 @{username}</div>
+          {["dashboard", "collections", "about"].map((page) => (
+            <button
+              key={page}
+              className={`mobile-nav-btn ${activePage === page ? "nav-active" : ""}`}
+              onClick={() => navigateTo(page)}
+            >
+              {page === "dashboard" && "⚡ Dashboard"}
+              {page === "collections" && "🗄️ Collections"}
+              {page === "about" && "📖 About"}
+            </button>
+          ))}
+          <button className="mobile-nav-btn mobile-logout" onClick={logout}>
+            🚪 Logout
+          </button>
+        </div>
+      )}
+
+      {/* PAGES */}
       {activePage === "dashboard" && (
         <div className="layout">
           <aside className="sidebar">
