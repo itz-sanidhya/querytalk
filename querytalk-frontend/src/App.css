@@ -1141,3 +1141,22 @@ code {
   .page-wrapper { padding: 24px 16px; }
   .auth-card { padding: 28px 20px; }
 }
+/* ---- COLLECTIONS MOBILE FIX ---- */
+@media (max-width: 768px) {
+  .collections-bottom {
+    flex-direction: column;
+  }
+
+  .collections-bottom .collection-input {
+    width: 100%;
+  }
+
+  .collections-bottom .submit-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .quick-collections {
+    flex-wrap: wrap;
+  }
+}
