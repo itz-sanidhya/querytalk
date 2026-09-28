@@ -118,9 +118,10 @@ app.post("/query", authMiddleware, async (req, res) => {
         console.log(`📨 Query received: "${text}" → collection: "${targetCollection}" by user: ${req.user.username}`);
 
         const groqCall = groq.chat.completions.create({
-            model: "llama-3.1-8b-instant",
-            max_tokens: 300,
+            model: "openai/gpt-oss-20b",
+            max_tokens: 1000,
             temperature: 0,
+            response_format: { type: "json_object" },
             messages: [
                 {
                     role: "system",
